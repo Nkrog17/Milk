@@ -15,14 +15,11 @@ public class NoiseScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnTriggerEnter (Collider other)
+    void OnTriggerEnter(Collider other)
     {
         audioSource.Play();
         Debug.Log("Im in the trigger");
-        Debug.Log(transform.position);
-        position = transform.position;
         noiseOn = true;
-        Debug.Log(noiseOn);
-        Debug.Log(Input.mousePosition);
+
     }
 }
