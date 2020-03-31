@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-
 public class InvestigatingScript : MonoBehaviour
 {
-
     public Camera cam;
     public NavMeshAgent agent;
     public float timer;
     public Transform player;
     float taberTimer;
+    public GameObject lossImage;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +15,6 @@ public class InvestigatingScript : MonoBehaviour
         //If there is a noise. Move. The input is position on the 2d plane of the screen.
         if (NoiseScript.noiseOn == true)
         {
-
             agent.SetDestination(new Vector3(0.15f, 3, 1.5f));
             timer = timer + Time.deltaTime;
             /*  Ray ray = cam.ScreenPointToRay(new Vector3(533, 409, 0));
@@ -25,7 +23,6 @@ public class InvestigatingScript : MonoBehaviour
               {
                   agent.SetDestination(hit.point);
               }
-
               */
 
 
@@ -51,23 +48,16 @@ public class InvestigatingScript : MonoBehaviour
                  agent.SetDestination(hit.point);
              }
              */
-
-
         }
-
-
-
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
             if (Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
             }
         }
-
         //Looks towards person if he gets too close.
         if (Vector3.Distance(player.position, this.transform.position) < 1.5f)
         {
@@ -79,6 +69,7 @@ public class InvestigatingScript : MonoBehaviour
             if (taberTimer > 5)
             {
                 Debug.Log("GAME OVER, BITCH!");
+                lossImage.SetActive(true);
             }
         }
         else
