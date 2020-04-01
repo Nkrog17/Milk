@@ -7,7 +7,8 @@ public class ObjectInteractions : MonoBehaviour
     public ParticleSystem ps;
     public AudioSource audioSource;
     public bool Activated = false;
-
+    public static Vector3 objectPosition;
+    public static bool startInvestigate = false;
     private GameObject winScript;
 
     // Start is called before the first frame update
@@ -45,6 +46,10 @@ public class ObjectInteractions : MonoBehaviour
 
     private void KeyTrigger()
     {
+        //NPC running to object
+        startInvestigate = true;
+        objectPosition = this.transform.position;
+
         audioSource.Play();
         if (!Activated){
         	audioSource.Play();
@@ -53,6 +58,8 @@ public class ObjectInteractions : MonoBehaviour
 
         	winScript = GameObject.FindGameObjectWithTag("winscript");
         	winScript.GetComponent<WinScript>().interactionCounter += 1;
+
+
         }
     }
 }

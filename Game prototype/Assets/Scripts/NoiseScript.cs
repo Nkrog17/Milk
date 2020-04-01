@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NoiseScript : MonoBehaviour
 {
-
     AudioSource audioSource;
     public static Vector3 position;
     public static bool noiseOn = false;
@@ -17,9 +16,10 @@ public class NoiseScript : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Player")
+        {
         audioSource.Play();
-        Debug.Log("Im in the trigger");
         noiseOn = true;
-
+        }
     }
 }

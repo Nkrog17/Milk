@@ -12,7 +12,7 @@ public class InvestigatingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //If there is a noise. Move. The input is position on the 2d plane of the screen.
+        //If there is a noise. Move. This is for squeeky floor only
         if (NoiseScript.noiseOn == true)
         {
             agent.SetDestination(new Vector3(0.15f, 3, 1.5f));
@@ -28,6 +28,14 @@ public class InvestigatingScript : MonoBehaviour
 
             Debug.Log(timer);
             //After ten seconds NPC will return to position.
+            if (timer > 3 && timer < 6)
+            {
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(1, 0, 1)), 0.1f);
+            }
+            if (timer > 6 && timer < 10)
+            {
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), 0.1f);
+            }
             if (timer > 10)
             {
                 NoiseScript.noiseOn = false;
@@ -49,6 +57,36 @@ public class InvestigatingScript : MonoBehaviour
              }
              */
         }
+
+        //Makes NPC move towards noise on interactable objects. (Danny's objects)
+        if (ObjectInteractions.startInvestigate == true)
+        {
+            agent.SetDestination(ObjectInteractions.objectPosition);
+            timer = timer + Time.deltaTime;
+            //Timer stuff and turning to look around once NPC gets to the source of the sound.
+            if (timer > 3 && timer < 4)
+            {
+                ObjectInteractions.objectPosition = this.transform.position;
+            }
+                
+            if (timer > 4 && timer < 7)
+            {
+                
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(1, 0, 1)), 0.1f);
+            }
+            if (timer > 7 && timer < 10)
+            {
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), 0.1f);
+            }
+            if (timer > 10)
+            {
+                ObjectInteractions.startInvestigate = false;
+                timer = 0;
+
+            }
+        }
+
+        //Makes NPC move based on mouseclicks. Remove before build.
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
