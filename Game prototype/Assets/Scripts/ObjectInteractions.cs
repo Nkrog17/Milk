@@ -6,6 +6,13 @@ public class ObjectInteractions : MonoBehaviour
 
     public ParticleSystem ps;
     public AudioSource audioSource;
+
+    public GameObject g_GameObject;
+    public Material m_Material;
+    public Material m_Material2;
+
+
+
     public bool Activated = false;
     public static Vector3 objectPosition;
     public static bool startInvestigate = false;
@@ -14,6 +21,7 @@ public class ObjectInteractions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
     }
     // Update is called once per frame
     void Update()
@@ -22,9 +30,12 @@ public class ObjectInteractions : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        
+        
         if (Input.GetKeyDown(KeyCode.E))
         {
             KeyTrigger();
+            g_GameObject.GetComponent<Renderer>().material = m_Material;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -42,6 +53,8 @@ public class ObjectInteractions : MonoBehaviour
         Debug.Log(other.name);
        
         ps.Stop();
+        //audioSource.Stop();
+        g_GameObject.GetComponent<Renderer>().material = m_Material2;
     }
 
     private void KeyTrigger()
