@@ -579,8 +579,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -0.06, y: 0.11, z: 0.09}
-  m_Center: {x: 0.00004498245, y: 0.000000008271133, z: 0.00031906948}
+  m_Size: {x: -0.06, y: 0.08, z: 0.06}
+  m_Center: {x: 0, y: 0, z: -0.01}
 --- !u!114 &54788185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6177,7 +6177,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -13737,7 +13737,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.33490568, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 5
   m_SpotAngle: 142
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -14140,7 +14140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.079076
+      value: 0.019
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15780,7 +15780,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.33490568, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 5
   m_SpotAngle: 142
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -23060,7 +23060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038889488}
   m_LocalRotation: {x: 0.09261167, y: -0, z: -0, w: 0.9957024}
-  m_LocalPosition: {x: 0.53, y: -4.098, z: 7.493}
+  m_LocalPosition: {x: 0.399, y: -3.989, z: 7.513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 868321572}
@@ -23078,7 +23078,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.33490568, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 5
   m_SpotAngle: 142
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

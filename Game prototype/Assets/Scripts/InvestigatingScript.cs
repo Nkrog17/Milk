@@ -26,7 +26,7 @@ public class InvestigatingScript : MonoBehaviour
               */
 
 
-            Debug.Log(timer);
+            //Debug.Log(timer);
             //After ten seconds NPC will return to position.
             if (timer > 3 && timer < 6)
             {
@@ -42,7 +42,7 @@ public class InvestigatingScript : MonoBehaviour
                 timer = 0;
 
             }
-            Debug.Log(NoiseScript.noiseOn);
+         //   Debug.Log(NoiseScript.noiseOn);
         }
 
         if (NoiseScript.noiseOn == false)
@@ -106,7 +106,7 @@ public class InvestigatingScript : MonoBehaviour
             taberTimer = taberTimer + Time.deltaTime;
             if (taberTimer > 5)
             {
-                Debug.Log("GAME OVER, BITCH!");
+                //Debug.Log("GAME OVER, BITCH!");
                 lossImage.SetActive(true);
             }
         }

@@ -7,7 +7,8 @@ public class ObjectInteractions : MonoBehaviour
     public ParticleSystem ps;
     public AudioSource audioSource;
 
-    public GameObject g_GameObject;
+    //Kun nødvendig, hvis objekt skal skifte materiale
+    public GameObject g_GameObject; 
     public Material m_Material;
     public Material m_Material2;
 
@@ -35,12 +36,13 @@ public class ObjectInteractions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             KeyTrigger();
-            g_GameObject.GetComponent<Renderer>().material = m_Material;
+            if (g_GameObject){
+            	g_GameObject.GetComponent<Renderer>().material = m_Material;
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
 
        if (!Activated){
         ps.Play();
@@ -49,22 +51,20 @@ public class ObjectInteractions : MonoBehaviour
 
     }
     private void OnTriggerExit(Collider other)
-    {
-        Debug.Log(other.name);
-       
+    {       
         ps.Stop();
         //audioSource.Stop();
-        g_GameObject.GetComponent<Renderer>().material = m_Material2;
+        if (g_GameObject){
+        	g_GameObject.GetComponent<Renderer>().material = m_Material2;
+        }
     }
 
     private void KeyTrigger()
     {
+    	if (!Activated){
         //NPC running to object
         startInvestigate = true;
         objectPosition = this.transform.position;
-
-        audioSource.Play();
-        if (!Activated){
         	audioSource.Play();
         	Activated = true;
         	Debug.Log("Activated");
