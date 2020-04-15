@@ -18,6 +18,7 @@ public class ObjectInteractions : MonoBehaviour
     public static Vector3 objectPosition;
     public static bool startInvestigate = false;
     private GameObject winScript;
+    private GameObject insanityScript;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,9 @@ public class ObjectInteractions : MonoBehaviour
         	winScript = GameObject.FindGameObjectWithTag("winscript");
         	winScript.GetComponent<WinScript>().interactionCounter += 1;
 
+        	insanityScript = GameObject.FindGameObjectWithTag("insanityscript");
+        	insanityScript.GetComponent<InsanityController>().AddInsanity(25); // Denne værdi er en placeholder
+;
 
         }
     }
