@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorAnim : MonoBehaviour
 {
-    private Animator anim;
+     Animator anim;
     
    
    
@@ -18,22 +18,16 @@ public class DoorAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
     private void OnTriggerStay(Collider other)
     {
-        
-        
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            anim.SetBool("isOpen", true);
-          
-        }
-  
+         anim.SetBool("isOpen", true);
+         
     }
 
     private void OnTriggerExit(Collider other)
     {
-        anim.SetBool("IsOpen", false);
+        anim.SetBool("isOpen", true);
     }
 }
