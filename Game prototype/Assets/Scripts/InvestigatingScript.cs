@@ -28,11 +28,11 @@ public class InvestigatingScript : MonoBehaviour
 
             //Debug.Log(timer);
             //After ten seconds NPC will return to position.
-            if (timer > 3 && timer < 6)
+            if (timer > 4 && timer < 7)
             {
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(1, 0, 1)), 0.1f);
             }
-            if (timer > 6 && timer < 10)
+            if (timer > 7 && timer < 10)
             {
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), 0.1f);
             }
@@ -86,7 +86,7 @@ public class InvestigatingScript : MonoBehaviour
             }
         }
 
-        //Makes NPC move based on mouseclicks. Remove before build.
+        /*Makes NPC move based on mouseclicks. Remove before build.
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -96,18 +96,29 @@ public class InvestigatingScript : MonoBehaviour
                 agent.SetDestination(hit.point);
             }
         }
+        */
+
+
         //Looks towards person if he gets too close.
-        if (Vector3.Distance(player.position, this.transform.position) < 1.5f)
+        //TurnAngle is the angle of which the player is needed to be inside of (from NPC) For the NPC to rotate towards player.
+        int turnAngle = 90;
+        if (Vector3.Distance(player.position, this.transform.position) < 1.8f && Vector3.Angle(this.transform.forward, player.transform.position - this.transform.position) < turnAngle)
         {
             Vector3 direction = player.position - this.transform.position;
             direction.y = 0;
             //Debug.Log(direction);
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
-            taberTimer = taberTimer + Time.deltaTime;
-            if (taberTimer > 5)
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.2f);
+
+            //This is the lose determination. You can change the angle
+            int loseAngle = 35;
+            if (Vector3.Angle(this.transform.forward, player.transform.position - this.transform.position) < loseAngle)
             {
-                //Debug.Log("GAME OVER, BITCH!");
-                lossImage.SetActive(true);
+                taberTimer = taberTimer + Time.deltaTime;
+                if (taberTimer > 2)
+                {
+                    //Debug.Log("GAME OVER, BITCH!");
+                    lossImage.SetActive(true);
+                }
             }
         }
         else
