@@ -619,9 +619,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps: {fileID: 2106999967}
   audioSource: {fileID: 1362511409}
-  g_GameObject: {fileID: 0}
-  m_Material: {fileID: 0}
-  m_Material2: {fileID: 0}
+  g_GameObject: {fileID: 97560509}
+  m_Material: {fileID: 2100000, guid: 042faaa5ff4fa7645a64dead99b64b54, type: 2}
+  m_Material2: {fileID: 2100000, guid: 997523cdcc6f97f41824c8711ac8bbf2, type: 2}
   Activated: 0
 --- !u!65 &89299601
 BoxCollider:
@@ -636,6 +636,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 1, z: 0.5}
   m_Center: {x: 1.4315664e-17, y: 0.0000010626391, z: -0.000000059604645}
+--- !u!1 &97560509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9101430577481724397, guid: a19183901516b2842be8cb79b122ae67,
+    type: 3}
+  m_PrefabInstance: {fileID: 1014984348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109685921
 GameObject:
   m_ObjectHideFlags: 0

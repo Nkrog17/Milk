@@ -19,7 +19,6 @@ public class ObjectInteractions : MonoBehaviour
     public static bool startInvestigate = false;
     private GameObject winScript;
     private GameObject insanityScript;
-
     private bool e = false;
 
     // Start is called before the first frame update
@@ -52,19 +51,29 @@ public class ObjectInteractions : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Player"))
+        {
 
-       if (!Activated){
-        ps.Play();
+            if (!Activated)
+            {
+                ps.Play();
+            }
+        }
     }
 
 
-    }
+    
     private void OnTriggerExit(Collider other)
-    {       
-        ps.Stop();
-        //audioSource.Stop();
-        if (g_GameObject){
-        	g_GameObject.GetComponent<Renderer>().material = m_Material2;
+    {
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            ps.Stop();
+            //audioSource.Stop();
+            if (g_GameObject)
+            {
+                g_GameObject.GetComponent<Renderer>().material = m_Material2;
+            }
         }
     }
 
