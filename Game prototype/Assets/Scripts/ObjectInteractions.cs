@@ -20,6 +20,8 @@ public class ObjectInteractions : MonoBehaviour
     private GameObject winScript;
     private GameObject insanityScript;
 
+    private bool e = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,13 +30,19 @@ public class ObjectInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	if (Input.GetKeyDown(KeyCode.E)){
+    		e = true;
+    	}
+    	else {
+    		e = false;
+    	}
       
     }
     private void OnTriggerStay(Collider other)
     {
         
         
-        if (Input.GetKeyDown(KeyCode.E))
+        if (e)
         {
             KeyTrigger();
             if (g_GameObject){
@@ -75,7 +83,6 @@ public class ObjectInteractions : MonoBehaviour
 
         	insanityScript = GameObject.FindGameObjectWithTag("insanityscript");
         	insanityScript.GetComponent<InsanityController>().AddInsanity(25); // Denne værdi er en placeholder
-;
 
         }
     }
