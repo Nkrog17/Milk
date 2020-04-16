@@ -35,6 +35,13 @@ public class ObjectInteractions : MonoBehaviour
     	else {
     		e = false;
     	}
+       if (!audioSource.isPlaying)
+        {
+            if (g_GameObject)
+            { 
+                g_GameObject.GetComponent<Renderer>().material = m_Material2;
+            }
+        }
       
     }
     private void OnTriggerStay(Collider other)
@@ -43,6 +50,8 @@ public class ObjectInteractions : MonoBehaviour
         
         if (e)
         {
+            Debug.Log("audio length is "+audioSource.clip.length);
+            
             KeyTrigger();
             if (g_GameObject){
             	g_GameObject.GetComponent<Renderer>().material = m_Material;
@@ -61,7 +70,7 @@ public class ObjectInteractions : MonoBehaviour
         }
     }
 
-
+    
     
     private void OnTriggerExit(Collider other)
     {
@@ -70,10 +79,10 @@ public class ObjectInteractions : MonoBehaviour
         {
             ps.Stop();
             //audioSource.Stop();
-            if (g_GameObject)
+           /* if (g_GameObject)
             {
                 g_GameObject.GetComponent<Renderer>().material = m_Material2;
-            }
+            }*/
         }
     }
 
