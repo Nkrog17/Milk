@@ -22,12 +22,14 @@ public class DoorAnim : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-         anim.SetBool("isOpen", true);
-         
+        if (Input.GetKey(KeyCode.E))
+        {
+            anim.SetBool("isOpen", true);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        anim.SetBool("isOpen", true);
+        anim.SetBool("isOpen", false);
     }
 }
