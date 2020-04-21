@@ -92,6 +92,7 @@ public class ObjectInteractions : MonoBehaviour
         //NPC running to object
         startInvestigate = true;
         objectPosition = this.transform.position;
+            Debug.Log(objectPosition);
         	audioSource.Play();
         	Activated = true;
         	Debug.Log("Activated");

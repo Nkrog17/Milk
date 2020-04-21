@@ -15,7 +15,7 @@ public class InvestigatingScript : MonoBehaviour
         //If there is a noise. Move. This is for squeeky floor only
         if (NoiseScript.noiseOn == true)
         {
-            agent.SetDestination(new Vector3(0.15f, 3, 1.5f));
+            agent.SetDestination(NoiseScript.squeekyPos);
             timer = timer + Time.deltaTime;
             /*  Ray ray = cam.ScreenPointToRay(new Vector3(533, 409, 0));
               RaycastHit hit;
@@ -30,11 +30,12 @@ public class InvestigatingScript : MonoBehaviour
             //After ten seconds NPC will return to position.
             if (timer > 4 && timer < 7)
             {
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(1, 0, 1)), 0.1f);
+                this.transform.Rotate(new Vector3(0, 2, 0));
             }
             if (timer > 7 && timer < 10)
             {
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), 0.1f);
+                this.transform.Rotate(new Vector3(0, -2, 0));
+
             }
             if (timer > 10)
             {
@@ -64,19 +65,19 @@ public class InvestigatingScript : MonoBehaviour
             agent.SetDestination(ObjectInteractions.objectPosition);
             timer = timer + Time.deltaTime;
             //Timer stuff and turning to look around once NPC gets to the source of the sound.
-            if (timer > 3 && timer < 4)
+            if (timer > 4.3 && timer < 4.5)
             {
                 ObjectInteractions.objectPosition = this.transform.position;
             }
                 
-            if (timer > 4 && timer < 7)
+            if (timer > 4.5 && timer < 7)
             {
-                
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(1, 0, 1)), 0.1f);
+
+                this.transform.Rotate(new Vector3(0, 2, 0));
             }
             if (timer > 7 && timer < 10)
             {
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), 0.1f);
+                this.transform.Rotate(new Vector3(0, -2, 0));
             }
             if (timer > 10)
             {
@@ -101,7 +102,7 @@ public class InvestigatingScript : MonoBehaviour
 
         //Looks towards person if he gets too close.
         //TurnAngle is the angle of which the player is needed to be inside of (from NPC) For the NPC to rotate towards player.
-        int turnAngle = 90;
+        int turnAngle = 130;
         if (Vector3.Distance(player.position, this.transform.position) < 1.8f && Vector3.Angle(this.transform.forward, player.transform.position - this.transform.position) < turnAngle)
         {
             Vector3 direction = player.position - this.transform.position;
@@ -110,11 +111,11 @@ public class InvestigatingScript : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.2f);
 
             //This is the lose determination. You can change the angle
-            int loseAngle = 35;
+            int loseAngle = 45;
             if (Vector3.Angle(this.transform.forward, player.transform.position - this.transform.position) < loseAngle)
             {
                 taberTimer = taberTimer + Time.deltaTime;
-                if (taberTimer > 1.5)
+                if (taberTimer > 0.6)
                 {
                     //Debug.Log("GAME OVER, BITCH!");
                     lossImage.SetActive(true);

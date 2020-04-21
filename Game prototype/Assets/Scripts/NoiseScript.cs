@@ -7,6 +7,7 @@ public class NoiseScript : MonoBehaviour
     AudioSource audioSource;
     public static Vector3 position;
     public static bool noiseOn = false;
+    public static Vector3 squeekyPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class NoiseScript : MonoBehaviour
         {
         audioSource.Play();
         noiseOn = true;
+            squeekyPos = this.transform.position;
         }
     }
 }
