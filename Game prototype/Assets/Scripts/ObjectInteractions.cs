@@ -100,7 +100,7 @@ public class ObjectInteractions : MonoBehaviour
         	winScript.GetComponent<WinScript>().interactionCounter += 1;
 
         	insanityScript = GameObject.FindGameObjectWithTag("insanityscript");
-        	insanityScript.GetComponent<InsanityController>().AddInsanity(20); // Denne værdi er en placeholder
+        	insanityScript.GetComponent<InsanityController>().AddInsanity(14); // Denne værdi er en placeholder
 
         }
     }

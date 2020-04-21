@@ -11,7 +11,7 @@ public class WinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (interactionCounter == 5){
+        if (interactionCounter == 7){
         	winImage.SetActive(true);
         	if(!winSound.isPlaying){
         		winSound.Play();
