@@ -114,7 +114,7 @@ public class InvestigatingScript : MonoBehaviour
             if (Vector3.Angle(this.transform.forward, player.transform.position - this.transform.position) < loseAngle)
             {
                 taberTimer = taberTimer + Time.deltaTime;
-                if (taberTimer > 2)
+                if (taberTimer > 1.5)
                 {
                     //Debug.Log("GAME OVER, BITCH!");
                     lossImage.SetActive(true);
