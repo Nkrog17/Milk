@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+
 public class InvestigatingScript : MonoBehaviour
 {
     public Camera cam;
@@ -8,6 +10,7 @@ public class InvestigatingScript : MonoBehaviour
     public Transform player;
     float taberTimer;
     public GameObject lossImage;
+    float restartTimer = 300;
 
     // Update is called once per frame
     void Update()
@@ -117,14 +120,26 @@ public class InvestigatingScript : MonoBehaviour
                 taberTimer = taberTimer + Time.deltaTime;
                 if (taberTimer > 0.6)
                 {
-                    //Debug.Log("GAME OVER, BITCH!");
                     lossImage.SetActive(true);
+                    if(restartTimer>10){
+                        restartTimer = 0;
+                    }
+                    
                 }
+            
             }
         }
         else
         {
             taberTimer = 0;
         }
+
+    restartTimer += Time.deltaTime;
+
+    if (restartTimer > 5 && restartTimer < 8){
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+
+         }
     }
 }
